@@ -1,0 +1,12 @@
+<result>
+	<email where="home">
+		<addr>gre@example.com</addr>
+
+	</email>
+	<email where='work'>
+		<addr>gre@work.com</addr>
+	</email>
+	<name>Grace R. Emlin</name>
+
+	<address>123 Main Street</address>
+</result>
