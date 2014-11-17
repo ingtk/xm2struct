@@ -9,12 +9,12 @@ program
   .parse(process.argv);
 
 var struct = require('./lib/struct');
-var load = require('.lib/load');
+var load = require('./lib/load');
 
 load(program.file, function(err, result) {
   if (err) {
     return console.error(err);
   }
   struct.analyse(result);
-  struct.generate();
+  console.log(struct.generate());
 });

@@ -13,19 +13,9 @@ describe('#struct', function() {
       if (err) {
         return done(err);
       }
-      var structs = [
-        'type Result struct {\n\tEmail Email `xml:"email"`\n\tName string `xml:"name"`\n\tAddress string `xml:"address"`\n}',
-        'type Email struct {\n\tAddr string `xml:"addr"`\n}'
-      ];
-      var checkIndex = 0;
-      var _consoleLog =console.log;
-      console.log = function(str) {
-        expect(str).to.be(structs[checkIndex]);
-        checkIndex ++;
-      };
       struct.analyse(result);
-      struct.generate();
-      console.log = _consoleLog;
+      var res = struct.generate();
+      expect(res).to.be('type Result struct {\n\tEmail Email `xml:"email"`\n\tName string `xml:"name"`\n\tAddress string `xml:"address"`\n}\ntype Email struct {\n\tAddr string `xml:"addr"`\n}\n');
       done();
     });
   });
