@@ -7,9 +7,9 @@ gulp.task('server', function () {
 
   //start the server at the beginning of the task
   server.run({
-    file: 'app.js'
+    args: ['app.js', '-c', './config/development.js']
   });
-  
+
   //restart the server when file changes
   gulp.watch(['app.js', 'routes/**/*.js'], [server.run]);
 

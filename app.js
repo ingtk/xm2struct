@@ -8,6 +8,18 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var debug = require('debug');
 
+var program = require('commander');
+var pkg = require('./package.json');
+
+program
+  .version(pkg.version)
+  .option('-c, --config [config]', 'Specified config file path')
+  .parse(process.argv);
+
+var config = require(require('path').resolve(program.config));
+
+var defaultPort = 3000;
+
 var routes = require('./routes/index');
 
 var app = module.exports.app = exports.app = express();
@@ -60,7 +72,7 @@ app.use(function(err, req, res, next) {
   });
 });
 
-app.set('port', process.env.PORT || 3000);
+app.set('port', config.port || process.env.PORT || defaultPort);
 
 var server = app.listen(app.get('port'), function() {
   debug('Express server listening on port ' + app.get('port'));
