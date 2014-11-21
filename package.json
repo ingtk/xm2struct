@@ -25,7 +25,7 @@
   "devDependencies": {
     "mocha": "^2.0.1",
     "expect.js": "^0.3.1",
-    "gulp-express": "^0.1.0",
+    "gulp-express": "=0.1.1",
     "connect-livereload": "^0.5.0"
   },
   "engines": {
