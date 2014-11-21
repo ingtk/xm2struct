@@ -11,8 +11,6 @@ var debug = require('debug');
 var routes = require('./routes/index');
 
 var app = module.exports.app = exports.app = express();
-console.log('================');
-console.log(app.get('env'));
 if (app.get('env') === 'development') {
   app.use(require('connect-livereload')());
 }

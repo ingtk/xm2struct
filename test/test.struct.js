@@ -15,7 +15,7 @@ describe('#struct', function() {
       }
       struct.analyse(result);
       var res = struct.generate();
-      expect(res).to.be('type Result struct {\n\tEmail Email `xml:"email"`\n\tName string `xml:"name"`\n\tAddress string `xml:"address"`\n}\ntype Email struct {\n\tAddr string `xml:"addr"`\n}\n');
+      expect(res).to.be('type Result struct {\n\tEmail Email `xml:"email"`\n\tName string `xml:"name"`\n\tAddress string `xml:"address"`\n}\ntype Email struct {\n\tWhere string `xml:"where,attr"`\n\tAddr string `xml:"addr"`\n}\n');
       done();
     });
   });
