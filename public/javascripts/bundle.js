@@ -18,6 +18,9 @@ $(function() {
       var result = struct.generate();
       $('#result').val(result);
       var match = result.match(/\n/g);
+      var maxRows = 15;
+      var rows = match.length;
+      rows = (rows > maxRows) ? maxRows: rows;
       $('#result').attr({ rows: match.length });
     });
   });
@@ -73,7 +76,7 @@ exports.analyse = function analyser(obj) {
         structList.push(info);
       } else if (_.isArray(v)) {
         var element = name + " ";
-        if (v.length > 2) {
+        if (v.length >= 2) {
           element += "[]";
         }
         if (_.isPlainObject(v[0])) {

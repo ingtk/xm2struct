@@ -17,6 +17,9 @@ $(function() {
       var result = struct.generate();
       $('#result').val(result);
       var match = result.match(/\n/g);
+      var maxRows = 15;
+      var rows = match.length;
+      rows = (rows > maxRows) ? maxRows: rows;
       $('#result').attr({ rows: match.length });
     });
   });
