@@ -13,9 +13,6 @@ var defaultPort = 3000;
 var routes = require('./routes/index');
 
 var app = module.exports.app = exports.app = express();
-if (app.get('env') === 'development') {
-  app.use(require('connect-livereload')());
-}
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
