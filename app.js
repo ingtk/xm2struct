@@ -8,16 +8,6 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var debug = require('debug');
 
-var program = require('commander');
-var pkg = require('./package.json');
-
-program
-  .version(pkg.version)
-  .option('-c, --config [config]', 'Specified config file path')
-  .parse(process.argv);
-
-var config = require(require('path').resolve(program.config));
-
 var defaultPort = 3000;
 
 var routes = require('./routes/index');
@@ -72,28 +62,8 @@ app.use(function(err, req, res, next) {
   });
 });
 
-app.set('port', config.port || process.env.PORT || defaultPort);
+app.set('port', process.env.PORT || defaultPort);
 
-var server = app.listen(app.get('port'), function() {
+app.listen(app.get('port'), function() {
   debug('Express server listening on port ' + app.get('port'));
-});
-
-var io = require('socket.io')(server);
-var struct = require('./lib/struct');
-
-var xml2js = require('xml2js');
-
-io.on('connection', function (socket) {
-  socket.on('convert', function (data) {
-    var parser = new xml2js.Parser();
-    parser.parseString(data.xml, function(err, data) {
-      if (err) {
-        return socket.emit('result', { err: err });
-      }
-      struct.clear();
-      struct.analyse(data);
-      var result = struct.generate();
-      socket.emit('result', { result: result });
-    });
-  });
 });
