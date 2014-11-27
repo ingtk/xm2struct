@@ -4,12 +4,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "node app.js",
     "test": "./node_modules/mocha/bin/mocha test"
   },
   "main": "index.js",
   "bin": {
-    "browserify": "bin/cmd.js"
+    "xml2struct": "bin/cmd.js"
   },
   "dependencies": {
     "commander": "^2.5.0",
