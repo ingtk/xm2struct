@@ -10,8 +10,8 @@ program
   .parse(process.argv);
 
 var fs = require('fs');
-var struct = require('./lib/struct');
-var load = require('./lib/load');
+var struct = require('../lib/struct');
+var load = require('../lib/load');
 
 load(program.infile, function(err, result) {
   if (err) {
